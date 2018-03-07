@@ -83,3 +83,6 @@ Levels: setosa versicolor virginica
 > plot(Iris[c("petal_length","petal_width")], col = result$cluster)
 > plot(Iris[c("petal_length","petal_width")], col = Iris$species)
 > 
+
+closeAllConnections()
+rm(list=ls())
