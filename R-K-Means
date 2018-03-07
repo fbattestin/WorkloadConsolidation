@@ -86,3 +86,25 @@ Levels: setosa versicolor virginica
 
 closeAllConnections()
 rm(list=ls())
+
+
+plot(dbSize[c("db_size","db_alloc")], col=dbSize$disk_id, main="Cluster Por Disco",pch=15)
+legend("bottomright", inset = .01, title ="Disk ID",legend= c(1:5)
+       ,fill = c(1:7), horiz=TRUE)
+
+
+plot(dbSize[c("db_size","db_alloc")], col=result$cluster, main="Cluster",pch=15)
+legend("bottomright", inset = .01, title ="Cluster ID",legend= c("Cluster 1","Cluster 2","Cluster 3")
+       ,fill = c(1:7), horiz=TRUE)
+
+
+
+plot(dbSize[c("db_size","db_alloc")], col=dbSize$db_name, main="Cluster por Banco de Dados",pch=15)
+legend("bottomright", inset = .01, title ="db name",legend= unique(dbSize$db_name), fill= terrain.colors(3)
+       , horiz=TRUE)
+
+
+plot(dbSize[c("db_size","db_alloc")], col=dbSize$db_name, main="Cluster por Banco de Dados",pch=15)
+legend("bottomright", inset = .01, title ="db name",legend= unique(dbSize$db_name), col= unique(dbSize$db_name)
+       , horiz=TRUE)
+
