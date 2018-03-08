@@ -113,3 +113,35 @@ disk_id	db_size	db_alloc	db_name
 1	3.5	1.4	setosa
 2	3	1.4	setosa
 3	3.2	1.3	setosa
+
+
+#####################################################################################
+
+dbSize <- read.csv("D:/Program Files/Dataset/Lab/dbSize.csv")
+dbSize$X  <- NULL
+dbSizeCluster <- dbSize
+KCluster <- kmeans(dbSizeCluster$db_alloc,5,nstart=50,iter.max=20)
+KCluster
+table(dbSize$disk_id,KCluster$cluster)
+plot(dbSize[c("db_alloc","disk_id")], col=dbSize$disk_id, main="Cluster Por Disco",pch=15)
+legend("bottomright", inset = .01, title ="Disk ID",legend= c(1:5)
+       ,fill = c(1:7), horiz=TRUE)
+.
+
+Elbow Method
+#Elbow Method for finding the optimal number of clusters
+set.seed(123)
+# Compute and plot wss for k = 2 to k = 15.
+k.max <- 15
+data <- scaled_data
+wss <- sapply(1:k.max, 
+              function(k){kmeans(data, k, nstart=50,iter.max = 15 )$tot.withinss})
+wss
+plot(1:k.max, wss,
+     type="b", pch = 19, frame = FALSE, 
+     xlab="Number of clusters K",
+     ylab="Total within-clusters sum of squares")
+ [1] 2005.0000 1635.8573 1416.7041 1253.9959 1115.4657 1026.0506  952.4835  887.7202
+ [9]  830.8277  780.2121  735.6714  693.7745  657.0939  631.5901  608.3576
+
+#####################################################################################
